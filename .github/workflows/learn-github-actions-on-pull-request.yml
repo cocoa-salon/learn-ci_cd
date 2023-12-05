@@ -1,10 +1,10 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+name: learn-github-actions-on-pull-request
+run-name: ${{ github.actor }} is learning GitHub Actions On Pull Request
+on: [pull_request]
 env:
   GREETING: hello
 jobs:
-  check-bats-version:
+  alert-pull-request:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,5 +17,4 @@ jobs:
         run: npm install -g bats
       - name: Run bats
         run: bats -v
-      - name: Echo GREETING
-        run: echo $GREETING
+      - run: echo pull request done!
